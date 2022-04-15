@@ -12,6 +12,10 @@ img{
     width: 100%;
     height: auto;
 }
+
+ul{
+    list-style: none;
+}
 /*==================== Variaveis =======================================*/
 :root{
     --header-heigth: 4.5rem;
@@ -37,7 +41,7 @@ body{
 
 }
 
-h1{
+.title{
     font: 700 1.87rem "poppins", sans-serif;
     color: var(--title-color);
     -webkit-font-smoothing: auto;
@@ -65,37 +69,6 @@ h1{
     hsla(var(--hue), 65%, 88%, 0.34) 100% );
 }
 /*=================== Layout ==========================*/
-#header{
-    border-bottom: 1px solid #e4e4e4;
-    margin-bottom: 2rem;
-    display: flex;
-
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background-color: var(--body-color);
-}
-nav{
-    height: var(--header-heigth);
-    display: flex;
-    align-items:center ;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.logo{
-    font: 700 1.31rem "poppins", sans-serif;
-    color: var(--title-color);
-}
-.logo span{
-    color: var(--Base-color);
-}
-
-main{
-   margin-top:var(--header-heigth); 
-}
 .container{
     margin-left: 1.5rem;
     margin-right: 1.5rem;
@@ -108,6 +81,100 @@ main{
 .section{
     padding: 5rem 0;
 }
+#header{
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 2rem;
+    display: flex;
+
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: var(--body-color);
+}
+
+main{
+    margin-top:calc(var(--header-heigth) + 2rem); 
+ }
+  
+/*=================== Logo ==========================*/
+.logo{
+    font: 700 1.31rem "poppins", sans-serif;
+    color: var(--title-color);
+}
+.logo span{
+    color: var(--Base-color);
+}
+
+/*=================== Navigation ==========================*/
+nav{
+    height: var(--header-heigth);
+    display: flex;
+    align-items:center ;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+nav ul li{
+    text-align: center;
+}
+nav ul li a{
+    transition: color 0.2s;
+    position: relative;
+}
+
+nav ul li a:hover{
+    color: var(--Base-color);
+}
+
+nav ul li a::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: var(--Base-color);
+
+   position: absolute;
+   left: 0;
+   bottom: -1.5rem;
+
+   transition: width 0.2s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+
+}
+
+nav .menu{
+    opacity: 0;
+    visibility: hidden;
+}
+/*=========mostrar menu=========*/
+nav.show .menu{
+    opacity: 1;
+    visibility: visible;
+
+    background: var(--body-color);
+    
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav.show .menu{
+    display: grid;
+    place-content: center;
+}
+
+nav.show ul.grid{
+    gap: 4rem;
+}
+
 /*============= HOME =========================*/
 #home {
     overflow: hidden;
